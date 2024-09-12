@@ -1,6 +1,6 @@
-package exercices.exerciceBonus;
+package exercices.exercice07;
 
-public class lesOperateurDeCode {
+public class LesOperateurDeComparaison {
     public static void main(String[] args) {
         int variable1 = 12;
         if (variable1 == 1) {
@@ -8,5 +8,5 @@ public class lesOperateurDeCode {
         } else {
             System.out.println("marche pas");
     }
-}
+    }
 }
