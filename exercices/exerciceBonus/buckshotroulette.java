@@ -7,6 +7,7 @@ public class buckshotroulette {
     public static final int MAX_SHELL = 4;
     public static final int MIN_SHELL = 1;
     public static final int MAX_HEALTH = 3;
+    public static Scanner scanner;
 
     // set the finals ints
     public static void main(String[] args) throws InterruptedException {
@@ -22,9 +23,9 @@ public class buckshotroulette {
         boolean self = true;
         boolean player = true;
         boolean sawed = false;
-
+        scanner = new Scanner(System.in);
         int anger = 0;
-        Scanner scanner = new Scanner(System.in);
+        
         // set all the variables in the code
         while (game == true) {
 
@@ -103,12 +104,29 @@ public class buckshotroulette {
                 }
 
             } else {
-
+                System.out.println("my turn now");
+                int aiChoice = (int) (Math.random() * (3 - 1 + 1)) + 1;
+                switch (aiChoice) {
+                    case 1:
+                        self = true;
+                        player = false;
+                        shoot(shotgun, playerHealth, aiHealth, self, player, sawed, playerTurn, playing);
+                        break;
+                    case 2:
+                        self = false;
+                        player = false;
+                        shoot(shotgun, playerHealth, aiHealth, self, player, sawed, playerTurn, playing);
+                        break;
+                    case 3:
+                        player = false;
+                        useItems(aiInventory, playerInventory, sawed, player, shotgun, playerHealth, aiHealth);
+                        break;
             }
 
             }
             scanner.close();
         }
+    }
         
 
     
@@ -299,7 +317,7 @@ public class buckshotroulette {
     }
 
     public static void useItems(int[] aiInventory, int[] playerInventory, boolean sawed, boolean player,int[] shotgun,int playerHealth, int aiHealth) throws InterruptedException {
-        Scanner scanner = new Scanner(System.in);
+        
         if (player == true) {
             System.out.println("what do you whant to use ?");
             for (int i = 0; i < playerInventory.length; i++) {
@@ -330,10 +348,47 @@ public class buckshotroulette {
                 int chois = scanner.nextInt();
                 switch (playerInventory[chois - 1]) {
                     case 1:
-                       
+                    System.out.println("you open the can of beer and drink it");
+                    Thread.sleep(2000);
+                    System.out.println("BURP !!");
+                    Thread.sleep(500);
+                    System.out.println("you take the shotgun and unload the chambered shell");
+                    Thread.sleep(500);
+                    for (int i = 0; i < shotgun.length; i++) {
+                        if (shotgun[i]>0) {
+                            if (shotgun[i] == 1) {
+                                
+                                System.out.println("a blank got out");
+                                Thread.sleep(500);
+                            } else {
+                                System.out.println("a live got out");
+                                Thread.sleep(500);
+                            }
+                            shotgun[i] = 0;
+                            break;
+                            
+                        }
+                    }
+                    playerInventory[chois - 1] = 0;
                         break;
                     case 2:
-                    
+                    System.out.println("you take the magnifing glass and smash it on the table");
+                    Thread.sleep(500);
+                    System.out.println("wille the dealer is distracted you open the chamber to see what's the next shell");
+                    Thread.sleep(500);
+                    for (int i = 0; i < shotgun.length; i++) {
+                        if (shotgun[i]>0) {
+                            if (shotgun[i] == 1) {
+                                System.out.println("it's a blank");
+                                Thread.sleep(500);
+                            } else {
+                                System.out.println("its a live");
+                                Thread.sleep(500);
+                            }
+                            break;
+                        }
+                    }
+                    playerInventory[chois - 1] = 0;
                         break;
                     case 3:
                     if (playerHealth < MAX_HEALTH) {
@@ -343,6 +398,8 @@ public class buckshotroulette {
                         Thread.sleep(500);
                         playerHealth++;
                         playerInventory[chois - 1] = 0;
+                    } else {
+                        System.out.println("you are already at max health");
                     }
                         break;
                     case 4:
@@ -362,9 +419,61 @@ public class buckshotroulette {
                 }
             
         } else {
-            
+            for (int i = 0; i < aiInventory.length; i++) {
+                if (aiInventory[i] > 0) {
+                    switch (aiInventory[i]) {
+                        case 1:
+                        System.out.println("he drink the a can of beer the trow the can beind him");
+                        Thread.sleep(2000);
+                        System.out.println("well well well");
+                        Thread.sleep(500);
+                        System.out.println("he take the shotgun and unload the chambered shell");
+                        Thread.sleep(500);
+                        for (int y = 0; y < shotgun.length; y++) {
+                            if (shotgun[y]>0) {
+                                if (shotgun[y] == 1) {
+                                    
+                                    System.out.println("a blank got out");
+                                    Thread.sleep(500);
+                                } else {
+                                    System.out.println("a live got out");
+                                    Thread.sleep(500);
+                                }
+                                shotgun[y] = 0;
+                                break;
+                            }
+                        }  
+                            break;
+                        case 2:
+                        System.out.println("he take the magnifing glass and smash it on the table");
+                    Thread.sleep(500);
+                    System.out.println("then trows it at you so you hide behind the table, when you got up he was looking in the shotgun");
+                    Thread.sleep(500);
+                        System.out.println("'intresting'");
+                        break;
+                        case 3:
+                        if (aiHealth < MAX_HEALTH) {
+                            System.out.println("he smoke a cigarette, you can see a smile on his face");        
+                            Thread.sleep(500);
+                            aiHealth++;
+                            
+                        } else {
+                            System.out.println("blud just smoked it");
+                        }
+                        break;
+                        case 4:
+                        System.out.println("he take the saw and saw the barel off");
+                    Thread.sleep(500);
+                    System.out.println("damage 2x (careful)");
+                    Thread.sleep(500);
+                    sawed = true;
+                    playerInventory[i] = 0;
+                        break;
+                    }
+                    aiInventory[i] = 0;
+                }
+            }
         }
-        scanner.close(); 
     }
 
 
