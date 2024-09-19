@@ -26,7 +26,7 @@ public class buckshotroulette {
         int anger = 0;
         Scanner scanner = new Scanner(System.in);
         // set all the variables in the code
-        // while (game = true) {
+        while (game == true) {
 
         for (int i = 0; i < shotgun.length; i++) {
             if (shotgun[i] == 0) {
@@ -47,7 +47,7 @@ public class buckshotroulette {
 
             }
             // check if the shotgun is loaded or no if no reload and gives items to both
-            // player
+
             if (playerTurn == true) {
                 
                 while (playing == true) {
@@ -70,11 +70,10 @@ public class buckshotroulette {
                             self = false;
                             player = true;
                             shoot(shotgun, playerHealth, aiHealth, self, player, sawed, playerTurn, playing);
-                            ;
-
                             break;
                         case 3:
-
+                            player = true;
+                            useItems(aiInventory, playerInventory, sawed, player, shotgun, playerHealth, aiHealth);
                             break;
                         default:
 
@@ -107,7 +106,7 @@ public class buckshotroulette {
 
             }
 
-            // }
+            }
             scanner.close();
         }
         
@@ -224,14 +223,14 @@ public class buckshotroulette {
     }
     // gives player randoms items
 
-    public static void shoot(int[] shotgun, int playerHealth, int aiHealth, boolean self, boolean player, boolean sawed,
-            boolean playerTurn, boolean playing) {
+    public static void shoot(int[] shotgun, int playerHealth, int aiHealth, boolean self, boolean player, boolean sawed,boolean playerTurn, boolean playing) throws InterruptedException {
         for (int i = 0; i < shotgun.length; i++) {
             if (shotgun[i] > 0) {
                 if (player == true) {
                     if (self == true) {
                         if (shotgun[i] == 1) {
                             System.out.println("click");
+                            Thread.sleep(500);
                             System.out.println("It's a blank");
                         } else {
                             System.out.println("BOOM!!!");
@@ -245,6 +244,7 @@ public class buckshotroulette {
                     } else {
                         if (shotgun[i] == 1) {
                             System.out.println("click");
+                            Thread.sleep(500);
                             System.out.println("It's a blank");
                             playerTurn = false;
                         } else {
@@ -261,6 +261,7 @@ public class buckshotroulette {
                     if (self == true) {
                         if (shotgun[i] == 1) {
                             System.out.println("click");
+                            Thread.sleep(500);
                             System.out.println("It's a blank");
                             playerTurn = false;
                         } else {
@@ -275,6 +276,7 @@ public class buckshotroulette {
                     } else {
                         if (shotgun[i] == 1) {
                             System.out.println("click");
+                            Thread.sleep(500);
                             System.out.println("It's a blank");
                             playerTurn = true;
                         } else {
@@ -296,9 +298,76 @@ public class buckshotroulette {
         }
     }
 
-    public static void useItems(int[] aiInventory, int[] playerInventory, boolean sawed, boolean player) {
+    public static void useItems(int[] aiInventory, int[] playerInventory, boolean sawed, boolean player,int[] shotgun,int playerHealth, int aiHealth) throws InterruptedException {
+        Scanner scanner = new Scanner(System.in);
+        if (player == true) {
+            System.out.println("what do you whant to use ?");
+            for (int i = 0; i < playerInventory.length; i++) {
+                switch (playerInventory[i]) {
+                    case 1:
+                        System.out.println(i + 1 + ": beer");
+                        Thread.sleep(500);
+                        break;
+                    case 2:
+                        System.out.println(i + 1 + ": magnifying glass");
+                        Thread.sleep(500);
+                        break;
+                    case 3:
+                        System.out.println(i + 1 + ": cigarette");
+                        Thread.sleep(500);
+                        break;
+                    case 4:
+                        System.out.println(i + 1 + ": saw");
+                        Thread.sleep(500);
+                    break;
+                    default:
+                        System.out.println(i + 1 + ": empty");
+                        Thread.sleep(500);
+                        break;
+                }
+            }
 
+                int chois = scanner.nextInt();
+                switch (playerInventory[chois - 1]) {
+                    case 1:
+                       
+                        break;
+                    case 2:
+                    
+                        break;
+                    case 3:
+                    if (playerHealth < MAX_HEALTH) {
+                        System.out.println("you smoke a cigarette, the pain in decresing");
+                        Thread.sleep(500);
+                        System.out.println("+1 HP");
+                        Thread.sleep(500);
+                        playerHealth++;
+                        playerInventory[chois - 1] = 0;
+                    }
+                        break;
+                    case 4:
+                    System.out.println("you take the saw and saw the barel off");
+                    Thread.sleep(500);
+                    System.out.println("damage 2x (it's gona hurt)");
+                    Thread.sleep(500);
+                    sawed = true;
+                    playerInventory[chois - 1] = 0;
+                        break;
+                    default:
+                    System.out.println("you grab air and trow it at the dealer");
+                    Thread.sleep(500);
+                    System.out.println("it's useless");
+                    Thread.sleep(500);
+                        break;
+                }
+            
+        } else {
+            
+        }
+        scanner.close(); 
     }
+
+
 
     public static void show(int[] playerInventory, int[] aiInventory, int playerHealth, int aiHealth)
             throws InterruptedException {
