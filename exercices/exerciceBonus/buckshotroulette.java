@@ -1,7 +1,7 @@
 package exercices.exerciceBonus;
 
 import java.util.Scanner;
-import java.lang.Object;
+
 
 public class buckshotroulette {
     public static final int MAX_SHELL = 4;
@@ -35,6 +35,7 @@ public class buckshotroulette {
                 empty = false;
                 break;
             }
+        }
             if (empty == true) {
                 System.out.println("the shotgun is empty");
                 Thread.sleep(500);
@@ -107,10 +108,11 @@ public class buckshotroulette {
             }
 
             // }
+            scanner.close();
         }
-        scanner.close();
+        
 
-    }
+    
 
     public static int[] reload(int[] shotgun, int MAX_SHELL, int MIN_SHELL) throws InterruptedException {
         int blank = (int) (Math.random() * (MAX_SHELL - MIN_SHELL + 1)) + MIN_SHELL;
