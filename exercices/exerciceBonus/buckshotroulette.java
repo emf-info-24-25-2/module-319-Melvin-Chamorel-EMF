@@ -553,5 +553,4 @@ public class buckshotroulette {
         Thread.sleep(100);
     }
     // show the table to the player
-
 }
