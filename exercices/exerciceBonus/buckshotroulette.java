@@ -886,20 +886,113 @@ public class buckshotroulette {
         }
 
         public static void showShell(int blank,int live) {
+            int emptySpace = 8 - blank - live;
             System.out.println("+-------------------------------------------------------------------------+");
             switch (live) {
                 case 1:
-                System.out.print("| +======+ +======+ +======+ +======+");
+                System.out.print("| " + ANSI_RED + "+======+" + ANSI_RESET);
                 break;
                 case 2:
-
+                System.out.print("| " + ANSI_RED + "+======+ +======+" + ANSI_RESET);
                 break;
                 case 3:
-
+                System.out.print("| " + ANSI_RED + "+======+ +======+ +======+" + ANSI_RESET);
                 break;
                 case 4:
-
+                System.out.print("| " + ANSI_RED + "+======+ +======+ +======+ +======+" + ANSI_RESET);
                 break;
             }
+            switch (blank) {
+                case 1:
+                System.out.print(ANSI_BLUE + " +======+" + ANSI_RESET);
+                break;
+                case 2:
+                System.out.print(ANSI_BLUE + " +======+ +======+" + ANSI_RESET);
+                break;
+                case 3:
+                System.out.print(ANSI_BLUE + " +======+ +======+ +======+" + ANSI_RESET);
+                break;
+                case 4:
+                System.out.print(ANSI_BLUE + " +======+ +======+ +======+ +======+" + ANSI_RESET);
+                break;
+            }
+            switch (emptySpace) {
+                case 0:
+                System.out.println(" |");
+                break;
+                case 1:
+                System.out.println(" +======+ |");
+                break;
+                case 2:
+                System.out.println(" +======+ +======+ |");
+                break;
+                case 3:
+                System.out.println(" +======+ +======+ +======+ |");
+                break;
+                case 4:
+                System.out.println(" +======+ +======+ +======+ +======+ |");
+                break;
+                case 5:
+                System.out.println(" +======+ +======+ +======+ +======+ +======+ |");
+                break;
+                case 6:
+                System.out.println(" +======+ +======+ +======+ +======+ +======+ +=====+ |");
+                break;
+            }
+            for (int i = 0; i < 7; i++) {
+                
+            
+            switch (live) {
+                case 1:
+                System.out.print("| " + ANSI_RED + "|      |" + ANSI_RESET);
+                break;
+                case 2:
+                System.out.print("| " + ANSI_RED + "|      | |      |" + ANSI_RESET);
+                break;
+                case 3:
+                System.out.print("| " + ANSI_RED + "|      | |      | |      |" + ANSI_RESET);
+                break;
+                case 4:
+                System.out.print("| " + ANSI_RED + "|      | |      | |      | |      |" + ANSI_RESET);
+                break;
+            }
+            switch (blank) {
+                case 1:
+                System.out.print(ANSI_BLUE + " |      |" + ANSI_RESET);
+                break;
+                case 2:
+                System.out.print(ANSI_BLUE + " |      | |      |" + ANSI_RESET);
+                break;
+                case 3:
+                System.out.print(ANSI_BLUE + " |      | |      | |      |" + ANSI_RESET);
+                break;
+                case 4:
+                System.out.print(ANSI_BLUE + " |      | |      | |      | |      |" + ANSI_RESET);
+                break;
+            }
+            switch (emptySpace) {
+                case 0:
+                System.out.println(" |");
+                break;
+                case 1:
+                System.out.println(" |      | |");
+                break;
+                case 2:
+                System.out.println(" |      | |      | |");
+                break;
+                case 3:
+                System.out.println(" |      | |      | |      | |");
+                break;
+                case 4:
+                System.out.println(" |      | |      | |      | |      | |");
+                break;
+                case 5:
+                System.out.println(" |      | |      | |      | |      | |      | |");
+                break;
+                case 6:
+                System.out.println(" |      | |      | |      | |      | |      | |      | |");
+                break;
+            }
+        }
         }
 }
