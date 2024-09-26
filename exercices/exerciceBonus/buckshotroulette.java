@@ -2,12 +2,14 @@ package exercices.exerciceBonus;
 
 import java.util.Scanner;
 
-
 public class buckshotroulette {
     public static final int MAX_SHELL = 4;
     public static final int MIN_SHELL = 1;
-    public static final int MAX_HEALTH = 3;
+    public static final int MAX_HEALTH = 4;
     public static Scanner scanner;
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
 
     // set the finals ints
     public static void main(String[] args) throws InterruptedException {
@@ -17,7 +19,7 @@ public class buckshotroulette {
         int playerHealth = MAX_HEALTH;
         int aiHealth = MAX_HEALTH;
         boolean empty = true;
-        boolean playerTurn = true;
+        boolean playerTurn = false;
         boolean game = true;
         boolean playing = true;
         boolean self = true;
@@ -28,7 +30,6 @@ public class buckshotroulette {
         
         // set all the variables in the code
         while (game == true) {
-
         for (int i = 0; i < shotgun.length; i++) {
             if (shotgun[i] == 0) {
                 empty = true;
@@ -58,7 +59,9 @@ public class buckshotroulette {
                     Thread.sleep(500);
                     System.out.println("2: shoot ennemy");
                     Thread.sleep(500);
-                    System.out.println("3: use use item");
+                    System.out.println("3: use item");
+                    Thread.sleep(500);
+                    System.out.println("4: show HP");
 
                     int chois = scanner.nextInt();
                     switch (chois) {
@@ -75,6 +78,9 @@ public class buckshotroulette {
                         case 3:
                             player = true;
                             useItems(aiInventory, playerInventory, sawed, player, shotgun, playerHealth, aiHealth);
+                            break;
+                        case 4:
+                            showHP(playerHealth, aiHealth);
                             break;
                         default:
 
@@ -135,6 +141,7 @@ public class buckshotroulette {
         int blank = (int) (Math.random() * (MAX_SHELL - MIN_SHELL + 1)) + MIN_SHELL;
         int live = (int) (Math.random() * (MAX_SHELL - MIN_SHELL + 1)) + MIN_SHELL;
         int shells = blank + live;
+        showShell(blank, live);
         System.out.println("there is " + live + " live and " + blank + " blank");
         Thread.sleep(500);
         for (int i = 0; i < shells; i++) {
@@ -189,6 +196,14 @@ public class buckshotroulette {
                     System.out.println("+ 1 saw");
                     Thread.sleep(500);
                     break;
+                    case 5:
+                    System.out.println("+ 1 cellphone");
+                    Thread.sleep(500);
+                    break;
+                case 6:
+                    System.out.println("+ 1 adrenaline");
+                    Thread.sleep(500);
+                    break;
 
             }
             for (int j = 0; j < aiInventory.length; j++) {
@@ -206,7 +221,7 @@ public class buckshotroulette {
         System.out.println("player is geting his items");
         Thread.sleep(500);
         for (int i = 0; i < 3; i++) {
-            int itemRandom = (int) (Math.random() * (4 - 1 + 1)) + 1;
+            int itemRandom = (int) (Math.random() * (6 - 1 + 1)) + 1;
             switch (itemRandom) {
                 case 1:
                     System.out.println("+ 1 beer");
@@ -225,6 +240,14 @@ public class buckshotroulette {
 
                 case 4:
                     System.out.println("+ 1 saw");
+                    Thread.sleep(500);
+                    break;
+                case 5:
+                    System.out.println("+ 1 cellphone");
+                    Thread.sleep(500);
+                    break;
+                case 6:
+                    System.out.println("+ 1 adrenaline");
                     Thread.sleep(500);
                     break;
             }
@@ -247,9 +270,10 @@ public class buckshotroulette {
                 if (player == true) {
                     if (self == true) {
                         if (shotgun[i] == 1) {
-                            System.out.println("click");
+                            System.out.print("click.");
+                            Thread.sleep(1000);
+                            System.out.println(" It's a blank");
                             Thread.sleep(500);
-                            System.out.println("It's a blank");
                         } else {
                             System.out.println("BOOM!!!");
                             if (sawed == true) {
@@ -261,9 +285,10 @@ public class buckshotroulette {
                         }
                     } else {
                         if (shotgun[i] == 1) {
-                            System.out.println("click");
+                            System.out.print("click.");
+                            Thread.sleep(1000);
+                            System.out.println(" It's a blank");
                             Thread.sleep(500);
-                            System.out.println("It's a blank");
                             playerTurn = false;
                         } else {
                             System.out.println("BOOM!!!");
@@ -278,9 +303,10 @@ public class buckshotroulette {
                 } else {
                     if (self == true) {
                         if (shotgun[i] == 1) {
-                            System.out.println("click");
+                            System.out.print("click.");
+                            Thread.sleep(1000);
+                            System.out.println(" It's a blank");
                             Thread.sleep(500);
-                            System.out.println("It's a blank");
                             playerTurn = false;
                         } else {
                             System.out.println("BOOM!!!");
@@ -293,9 +319,10 @@ public class buckshotroulette {
                         }
                     } else {
                         if (shotgun[i] == 1) {
-                            System.out.println("click");
+                            System.out.print("click.");
+                            Thread.sleep(1000);
+                            System.out.println(" It's a blank");
                             Thread.sleep(500);
-                            System.out.println("It's a blank");
                             playerTurn = true;
                         } else {
                             System.out.println("BOOM!!!");
@@ -337,7 +364,13 @@ public class buckshotroulette {
                     case 4:
                         System.out.println(i + 1 + ": saw");
                         Thread.sleep(500);
-                    break;
+                        break;
+                    case 5:
+                        System.out.println(i + 1 + ": cellphone");
+                        Thread.sleep(500);
+                        break;
+                    case 6:
+                        System.out.println(i + 1 + ": adrenaline");
                     default:
                         System.out.println(i + 1 + ": empty");
                         Thread.sleep(500);
@@ -380,10 +413,10 @@ public class buckshotroulette {
                         if (shotgun[i]>0) {
                             if (shotgun[i] == 1) {
                                 System.out.println("it's a blank");
-                                Thread.sleep(500);
+                                Thread.sleep(1000);
                             } else {
                                 System.out.println("its a live");
-                                Thread.sleep(500);
+                                Thread.sleep(1000);
                             }
                             break;
                         }
@@ -395,7 +428,7 @@ public class buckshotroulette {
                         System.out.println("you smoke a cigarette, the pain in decresing");
                         Thread.sleep(500);
                         System.out.println("+1 HP");
-                        Thread.sleep(500);
+                        Thread.sleep(1000);
                         playerHealth++;
                         playerInventory[chois - 1] = 0;
                     } else {
@@ -406,15 +439,38 @@ public class buckshotroulette {
                     System.out.println("you take the saw and saw the barel off");
                     Thread.sleep(500);
                     System.out.println("damage 2x (it's gona hurt)");
-                    Thread.sleep(500);
+                    Thread.sleep(1000);
                     sawed = true;
                     playerInventory[chois - 1] = 0;
                         break;
+                    case 5:
+                    System.out.println("you take the cellphone, a misterious voice say");
+                    int voiceMind = 0;
+                    for (int i = 0; i < shotgun.length; i++) {
+                        if (shotgun[i] > 0) {
+                            voiceMind++;
+                        }
+                    }
+                    if (voiceMind == 1) {
+                        System.out.println("womp womp");
+                        Thread.sleep(1000);
+                    } else {
+                    int voiceTalk = (int) (Math.random() * (voiceMind - 2 + 1)) + 2;
+                    if (shotgun[voiceTalk] == 1) {
+                        System.out.println("number " + voiceTalk + " is a blank");
+                        Thread.sleep(1000);
+                    } else {
+                        System.out.println("number " + voiceTalk + " is a live");
+                        Thread.sleep(1000);
+                    }
+                }
+
+                    break;
                     default:
                     System.out.println("you grab air and trow it at the dealer");
                     Thread.sleep(500);
                     System.out.println("it's useless");
-                    Thread.sleep(500);
+                    Thread.sleep(1000);
                         break;
                 }
             
@@ -449,25 +505,33 @@ public class buckshotroulette {
                     Thread.sleep(500);
                     System.out.println("then trows it at you so you hide behind the table, when you got up he was looking in the shotgun");
                     Thread.sleep(500);
-                        System.out.println("'intresting'");
+                    System.out.println("'intresting'");
+                    Thread.sleep(1000);
                         break;
                         case 3:
                         if (aiHealth < MAX_HEALTH) {
                             System.out.println("he smoke a cigarette, you can see a smile on his face");        
-                            Thread.sleep(500);
+                            Thread.sleep(1000);
                             aiHealth++;
                             
                         } else {
                             System.out.println("blud just smoked it");
+                            Thread.sleep(1000);
                         }
                         break;
                         case 4:
                         System.out.println("he take the saw and saw the barel off");
                     Thread.sleep(500);
                     System.out.println("damage 2x (careful)");
-                    Thread.sleep(500);
+                    Thread.sleep(1000);
                     sawed = true;
                     playerInventory[i] = 0;
+                        break;
+                        case 5:
+                        System.out.println("he take the phone...");
+                        Thread.sleep(500);
+                        System.out.println("and he trows it");
+                        Thread.sleep(1000);
                         break;
                     }
                     aiInventory[i] = 0;
@@ -482,21 +546,7 @@ public class buckshotroulette {
             throws InterruptedException {
         System.out.println("+--------+-----------------------+--------+--------+");
         Thread.sleep(100);
-        switch (aiHealth) {
-            case 0:
-
                 System.out.println("|        |        |              |        |        |");
-                break;
-            case 1:
-                System.out.println("|        |        |      ♡       |        |        |");
-                break;
-            case 2:
-                System.out.println("|        |        |    ♡   ♡    |        |        |");
-                break;
-            case 3:
-                System.out.println("|        |        |    ♡ ♡ ♡     |        |        |");
-                break;
-        }
         Thread.sleep(100);
         System.out.println("|    " + aiInventory[0] + "   |    " + aiInventory[1] + "   |              |    "
                 + aiInventory[2] + "   |    " + aiInventory[3] + "   |");
@@ -534,23 +584,322 @@ public class buckshotroulette {
         System.out.println("|    " + playerInventory[4] + "   |    " + playerInventory[5] + "   |              |    "
                 + playerInventory[6] + "   |    " + playerInventory[7] + "   |");
         Thread.sleep(100);
-        switch (playerHealth) {
-            case 0:
-                System.out.println("|        |        |              |        |        |");
-                break;
-            case 1:
-                System.out.println("|        |        |      ♡       |        |        |");
-                break;
-            case 2:
-                System.out.println("|        |        |    ♡   ♡    |        |        |");
-                break;
-            case 3:
-                System.out.println("|        |        |    ♡ ♡ ♡     |        |        |");
-                break;
-        }
+        System.out.println("|        |        |              |        |        |");
         Thread.sleep(100);
         System.out.println("+--------+-----------------------+--------+--------+");
         Thread.sleep(100);
     }
     // show the table to the player
+    public static void showHP(int playerHealth, int aiHealth) throws InterruptedException {
+        System.out.println("+--------------------------------------------+---------------------------------------------+");
+        Thread.sleep(100);
+        System.out.println("|                                            |                                             |");
+        Thread.sleep(100);
+        System.out.println("| Dealer                                     | Player                                      |");
+        Thread.sleep(100);
+        System.out.println("+--------------------------------------------+---------------------------------------------+");
+        Thread.sleep(100);
+        switch (aiHealth) {
+            case 1:
+            System.out.print("|    /                                       ");
+            break;
+            case 2:
+            System.out.print("|    /          /                            ");
+            break;
+            case 3:
+            System.out.print("|    /          /          /                 ");
+            break;
+            case 4:
+            System.out.print("|    /          /          /          /      ");
+        }
+        Thread.sleep(100);
+        switch (playerHealth) {
+            case 1:
+            System.out.println("|    /                                        |");
+            break;
+            case 2:
+            System.out.println("|    /          /                             |");
+            break;
+            case 3:
+            System.out.println("|    /          /          /                  |");
+            break;
+            case 4:
+            System.out.println("|    /          /          /          /       |");
+        }
+        Thread.sleep(100);
+        switch (aiHealth) {
+            case 1:
+            System.out.print("|   /                                        ");
+            break;
+            case 2:
+            System.out.print("|   /          /                             ");
+            break;
+            case 3:
+            System.out.print("|   /          /          /                  ");
+            break;
+            case 4:
+            System.out.print("|   /          /          /          /       ");
+        }
+        Thread.sleep(100);
+        switch (playerHealth) {
+            case 1:
+            System.out.println("|   /                                         |");
+            break;
+            case 2:
+            System.out.println("|   /          /                              |");
+            break;
+            case 3:
+            System.out.println("|   /          /          /                   |");
+            break;
+            case 4:
+            System.out.println("|   /          /          /          /        |");
+        }
+        Thread.sleep(100);
+        switch (aiHealth) {
+            case 1:
+            System.out.print("|  /                                         ");
+            break;
+            case 2:
+            System.out.print("|  /          /                              ");
+            break;
+            case 3:
+            System.out.print("|  /          /          /                   ");
+            break;
+            case 4:
+            System.out.print("|  /          /          /          /        ");
+        }
+        Thread.sleep(100);
+        switch (playerHealth) {
+            case 1:
+            System.out.println("|  /                                          |");
+            break;
+            case 2:
+            System.out.println("|  /          /                               |");
+            break;
+            case 3:
+            System.out.println("|  /          /          /                    |");
+            break;
+            case 4:
+            System.out.println("|  /          /          /          /         |");
+        }
+        Thread.sleep(100);
+        switch (aiHealth) {
+            case 1:
+            System.out.print("| /                                          ");
+            break;
+            case 2:
+            System.out.print("| /          /                               ");
+            break;
+            case 3:
+            System.out.print("| /          /          /                    ");
+            break;
+            case 4:
+            System.out.print("| /          /          /          /         ");
+        }
+        Thread.sleep(100);
+        switch (playerHealth) {
+            case 1:
+            System.out.println("| /                                           |");
+            break;
+            case 2:
+            System.out.println("| /          /                                |");
+            break;
+            case 3:
+            System.out.println("| /          /          /                     |");
+            break;
+            case 4:
+            System.out.println("| /          /          /          /          |");
+        }
+        Thread.sleep(100);
+        switch (aiHealth) {
+            case 1:
+            System.out.print("|/______                                     ");
+            break;
+            case 2:
+            System.out.print("|/______    /______                          ");
+            break;
+            case 3:
+            System.out.print("|/______    /______    /______               ");
+            break;
+            case 4:
+            System.out.print("|/______    /______    /______    /______    ");
+        }
+        Thread.sleep(100);
+        switch (playerHealth) {
+            case 1:
+            System.out.println("|/______                                      |");
+            break;
+            case 2:
+            System.out.println("|/______    /______                           |");
+            break;
+            case 3:
+            System.out.println("|/______    /______    /______                |");
+            break;
+            case 4:
+            System.out.println("|/______    /______    /______    /______     |");
+        }
+        Thread.sleep(100);
+        switch (aiHealth) {
+            case 1:
+            System.out.print("|      /                                     ");
+            break;
+            case 2:
+            System.out.print("|      /          /                          ");
+            break;
+            case 3:
+            System.out.print("|      /          /          /               ");
+            break;
+            case 4:
+            System.out.print("|      /          /          /          /    ");
+        }
+        Thread.sleep(100);
+        switch (playerHealth) {
+            case 1:
+            System.out.println("|      /                                      |");
+            break;
+            case 2:
+            System.out.println("|      /          /                           |");
+            break;
+            case 3:
+            System.out.println("|      /          /          /                |");
+            break;
+            case 4:
+            System.out.println("|      /          /          /          /     |");
+        }
+        Thread.sleep(100);
+        switch (aiHealth) {
+            case 1:
+            System.out.print("|     /                                      ");
+            break;
+            case 2:
+            System.out.print("|     /          /                           ");
+            break;
+            case 3:
+            System.out.print("|     /          /          /                ");
+            break;
+            case 4:
+            System.out.print("|     /          /          /          /     ");
+        }
+        Thread.sleep(100);
+        switch (playerHealth) {
+            case 1:
+            System.out.println("|     /                                       |");
+            break;
+            case 2:
+            System.out.println("|     /          /                            |");
+            break;
+            case 3:
+            System.out.println("|     /          /          /                 |");
+            break;
+            case 4:
+            System.out.println("|     /          /          /          /      |");
+        }
+        Thread.sleep(100);
+        switch (aiHealth) {
+            case 1:
+            System.out.print("|    /                                       ");
+            break;
+            case 2:
+            System.out.print("|    /          /                            ");
+            break;
+            case 3:
+            System.out.print("|    /          /          /                 ");
+            break;
+            case 4:
+            System.out.print("|    /          /          /          /      ");
+        }
+        Thread.sleep(100);
+        switch (playerHealth) {
+            case 1:
+            System.out.println("|    /                                        |");
+            break;
+            case 2:
+            System.out.println("|    /          /                             |");
+            break;
+            case 3:
+            System.out.println("|    /          /          /                  |");
+            break;
+            case 4:
+            System.out.println("|    /          /          /          /       |");
+        }
+        Thread.sleep(100);
+        switch (aiHealth) {
+            case 1:
+            System.out.print("|   /                                        ");
+            break;
+            case 2:
+            System.out.print("|   /          /                             ");
+            break;
+            case 3:
+            System.out.print("|   /          /          /                  ");
+            break;
+            case 4:
+            System.out.print("|   /          /          /          /       ");
+        }
+        Thread.sleep(100);
+        switch (playerHealth) {
+            case 1:
+            System.out.println("|   /                                         |");
+            break;
+            case 2:
+            System.out.println("|   /          /                              |");
+            break;
+            case 3:
+            System.out.println("|   /          /          /                   |");
+            break;
+            case 4:
+            System.out.println("|   /          /          /          /        |");
+        }
+        Thread.sleep(100);
+        switch (aiHealth) {
+            case 1:
+            System.out.print("|  /                                         ");
+            break;
+            case 2:
+            System.out.print("|  /          /                              ");
+            break;
+            case 3:
+            System.out.print("|  /          /          /                   ");
+            break;
+            case 4:
+            System.out.print("|  /          /          /          /        ");
+        }
+        Thread.sleep(100);
+        switch (playerHealth) {
+            case 1:
+            System.out.println("|  /                                          |");
+            break;
+            case 2:
+            System.out.println("|  /          /                               |");
+            break;
+            case 3:
+            System.out.println("|  /          /          /                    |");
+            break;
+            case 4:
+            System.out.println("|  /          /          /          /         |");
+        }
+        Thread.sleep(100);
+        System.out.println("|                                            |                                             |");
+        Thread.sleep(100);
+        System.out.println("+--------------------------------------------+---------------------------------------------+");
+        Thread.sleep(100);
+        }
+
+        public static void showShell(int blank,int live) {
+            System.out.println("+-------------------------------------------------------------------------+");
+            switch (live) {
+                case 1:
+                System.out.print("| +======+ +======+ +======+ +======+");
+                break;
+                case 2:
+
+                break;
+                case 3:
+
+                break;
+                case 4:
+
+                break;
+            }
+        }
 }
