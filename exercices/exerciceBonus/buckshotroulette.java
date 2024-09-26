@@ -10,6 +10,7 @@ public class buckshotroulette {
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
 
     // set the finals ints
     public static void main(String[] args) throws InterruptedException {
@@ -78,6 +79,7 @@ public class buckshotroulette {
                         case 3:
                             player = true;
                             useItems(aiInventory, playerInventory, sawed, player, shotgun, playerHealth, aiHealth);
+                            show(playerInventory, aiInventory, playerHealth, aiHealth);
                             break;
                         case 4:
                             showHP(playerHealth, aiHealth);
@@ -341,6 +343,7 @@ public class buckshotroulette {
                 break;
             }
         }
+        
     }
 
     public static void useItems(int[] aiInventory, int[] playerInventory, boolean sawed, boolean player,int[] shotgun,int playerHealth, int aiHealth) throws InterruptedException {
@@ -465,6 +468,30 @@ public class buckshotroulette {
                     }
                 }
 
+                    break;
+                    case 6:
+                    int andrenalineKick = 0;
+                    for (int i = 0; i < aiInventory.length; i++) {
+                        if (aiInventory[i]>0) {
+                            andrenalineKick++;
+                        }
+                    }
+                    if (andrenalineKick>0) {
+                        System.out.print("you sting yourself.");
+                        System.out.println(" you see a flash and you take one of the dealer's item");
+                        int adrenalineKickBack = (int) (Math.random() * (andrenalineKick - 1 + 1)) + 1;
+                        for (int i = 0; i < aiInventory.length;i++) {
+                            if (aiInventory[i]>0) {
+                                if (adrenalineKickBack == 0) {
+                                    playerInventory[chois - 1] = aiInventory[i];
+                                    aiInventory[i] = 0;
+                                } else {
+                                    adrenalineKickBack--;
+                                }
+                            }
+                        }
+                    }
+                    
                     break;
                     default:
                     System.out.println("you grab air and trow it at the dealer");
@@ -883,11 +910,15 @@ public class buckshotroulette {
         Thread.sleep(100);
         System.out.println("+--------------------------------------------+---------------------------------------------+");
         Thread.sleep(100);
+        if (playerHealth==1) {
+            System.out.println("careful now");
+        }
         }
 
-        public static void showShell(int blank,int live) {
+        public static void showShell(int blank,int live) throws InterruptedException {
             int emptySpace = 8 - blank - live;
             System.out.println("+-------------------------------------------------------------------------+");
+            Thread.sleep(100);
             switch (live) {
                 case 1:
                 System.out.print("| " + ANSI_RED + "+======+" + ANSI_RESET);
@@ -902,6 +933,7 @@ public class buckshotroulette {
                 System.out.print("| " + ANSI_RED + "+======+ +======+ +======+ +======+" + ANSI_RESET);
                 break;
             }
+            Thread.sleep(100);
             switch (blank) {
                 case 1:
                 System.out.print(ANSI_BLUE + " +======+" + ANSI_RESET);
@@ -916,6 +948,7 @@ public class buckshotroulette {
                 System.out.print(ANSI_BLUE + " +======+ +======+ +======+ +======+" + ANSI_RESET);
                 break;
             }
+            Thread.sleep(100);
             switch (emptySpace) {
                 case 0:
                 System.out.println(" |");
@@ -939,6 +972,7 @@ public class buckshotroulette {
                 System.out.println(" +======+ +======+ +======+ +======+ +======+ +=====+ |");
                 break;
             }
+            Thread.sleep(100);
             for (int i = 0; i < 7; i++) {
                 
             
@@ -956,6 +990,7 @@ public class buckshotroulette {
                 System.out.print("| " + ANSI_RED + "|      | |      | |      | |      |" + ANSI_RESET);
                 break;
             }
+            Thread.sleep(100);
             switch (blank) {
                 case 1:
                 System.out.print(ANSI_BLUE + " |      |" + ANSI_RESET);
@@ -970,6 +1005,7 @@ public class buckshotroulette {
                 System.out.print(ANSI_BLUE + " |      | |      | |      | |      |" + ANSI_RESET);
                 break;
             }
+            Thread.sleep(100);
             switch (emptySpace) {
                 case 0:
                 System.out.println(" |");
@@ -993,6 +1029,81 @@ public class buckshotroulette {
                 System.out.println(" |      | |      | |      | |      | |      | |      | |");
                 break;
             }
+            Thread.sleep(100);
         }
+        switch (emptySpace) {
+            case 0:
+            System.out.println("| " + ANSI_YELLOW + "+======+ +======+ +======+ +======+ +======+ +======+ +======+ +======+" + ANSI_RESET + " |");
+            break;
+            case 1:
+            System.out.println("| " + ANSI_YELLOW + "+======+ +======+ +======+ +======+ +======+ +======+ +======+" + ANSI_RESET + " +======+ |");
+            break;
+            case 2:
+            System.out.println("| " + ANSI_YELLOW + "+======+ +======+ +======+ +======+ +======+ +======+" + ANSI_RESET + " +======+ +======+ |");
+            break;
+            case 3:
+            System.out.println("| " + ANSI_YELLOW + "+======+ +======+ +======+ +======+ +======+" + ANSI_RESET + " +======+ +======+ +======+ |");
+            break;
+            case 4:
+            System.out.println("| " + ANSI_YELLOW + "+======+ +======+ +======+ +======+" + ANSI_RESET + " +======+ +======+ +======+ +======+ |");
+            break;
+            case 5:
+            System.out.println("| " + ANSI_YELLOW + "+======+ +======+ +======+" + ANSI_RESET + " +======+ +======+ +======+ +======+ +======+ |");
+            break;
+            case 6:
+            System.out.println("| " + ANSI_YELLOW + "+======+ +======+ " + ANSI_RESET + "+======+ +======+ +======+ +======+ +======+ +======+ |");
+            break;
+        }
+        Thread.sleep(100);
+        switch (emptySpace) {
+            case 0:
+            System.out.println("| " + ANSI_YELLOW + "|      | |      | |      | |      | |      | |      | |      | |      |" + ANSI_RESET + " |");
+            break;
+            case 1:
+            System.out.println("| " + ANSI_YELLOW + "|      | |      | |      | |      | |      | |      | |      |" + ANSI_RESET + " |      | |");
+            break;
+            case 2:
+            System.out.println("| " + ANSI_YELLOW + "|      | |      | |      | |      | |      | |      |" + ANSI_RESET + " |      | |      | |");
+            break;
+            case 3:
+            System.out.println("| " + ANSI_YELLOW + "|      | |      | |      | |      | |      |" + ANSI_RESET + " |      | |      | |      | |");
+            break;
+            case 4:
+            System.out.println("| " + ANSI_YELLOW + "|      | |      | |      | |      |" + ANSI_RESET + " |      | |      | |      | |      | |");
+            break;
+            case 5:
+            System.out.println("| " + ANSI_YELLOW + "|      | |      | |      |" + ANSI_RESET + " |      | |      | |      | |      | |      | |");
+            break;
+            case 6:
+            System.out.println("| " + ANSI_YELLOW + "|      | |      | " + ANSI_RESET + "|      | |      | |      | |      | |      | |      | |");
+            break;
+        }
+        Thread.sleep(100);
+        switch (emptySpace) {
+            case 0:
+            System.out.println("| " + ANSI_YELLOW + "+======+ +======+ +======+ +======+ +======+ +======+ +======+ +======+" + ANSI_RESET + " |");
+            break;
+            case 1:
+            System.out.println("| " + ANSI_YELLOW + "+======+ +======+ +======+ +======+ +======+ +======+ +======+" + ANSI_RESET + " +======+ |");
+            break;
+            case 2:
+            System.out.println("| " + ANSI_YELLOW + "+======+ +======+ +======+ +======+ +======+ +======+" + ANSI_RESET + " +======+ +======+ |");
+            break;
+            case 3:
+            System.out.println("| " + ANSI_YELLOW + "+======+ +======+ +======+ +======+ +======+" + ANSI_RESET + " +======+ +======+ +======+ |");
+            break;
+            case 4:
+            System.out.println("| " + ANSI_YELLOW + "+======+ +======+ +======+ +======+" + ANSI_RESET + " +======+ +======+ +======+ +======+ |");
+            break;
+            case 5:
+            System.out.println("| " + ANSI_YELLOW + "+======+ +======+ +======+" + ANSI_RESET + " +======+ +======+ +======+ +======+ +======+ |");
+            break;
+            case 6:
+            System.out.println("| " + ANSI_YELLOW + "+======+ +======+ " + ANSI_RESET + "+======+ +======+ +======+ +======+ +======+ +======+ |");
+            break;
+        }
+        Thread.sleep(100);
+        System.out.println("+-------------------------------------------------------------------------+");
+        Thread.sleep(100);
         }
 }
