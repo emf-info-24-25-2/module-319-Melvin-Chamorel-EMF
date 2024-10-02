@@ -4,8 +4,10 @@ public class App {
     public static void main(String[] args) throws Exception {
         String[] riders = new String[] {"Killian","Max","Noé","Beat","André","Alex","John","Fred"};
         int tour = 1;
+        //ici la donnée dit "tant que" (pt 6.3), c'est une indice qu'il faut utiliser while, plutot que if
+        //une taille d'au moins 2, c'est >=2, pas <=
         if (riders.length <= 2) {
-            genererTemps(TEMPS_MAX,TEMPS_MIN);
+            genererTemps(TEMPS_MAX,TEMPS_MIN);//ici, il faut mettre ce résultat dans une variable, sinon il disparait. donc int[] tabTemps=genererTemps...
             switch (tour) {
                 case 1:
                 System.out.println("Résultat du quart de finale :");
@@ -21,17 +23,21 @@ public class App {
                     break;
             }
             for (int i = 0; i < riders.length; i++) {
+                //pour ne pas avoir de retour à la ligne entre les riders, il faut utiliser print plutot que println
                 //System.out.println(riders[i] + "[" + tabTemps[i] + "s]");
             }
             System.out.println("------------------------------------");
             tour++;
-            calculQualification(null, riders);
+            calculQualification(null, riders);//ici vous auriez riders=calculQualification...
         }else {
             System.out.println("le gagnant est : " + riders[0]);
         }
 
     }
 
+    //pt3, la méthode genererTemps doit recevoir la taille du tableau en paramètre
+    //par exemple si j'appelle genererTableau(3), ça va créer un tableau de taille 3, et genererTableau(245) va en créer un de taille 245
+    //pas besoin de passer les constantes en paramètres, elles sont accessibles dans la classe
     public static int[] genererTemps(int TEMPS_MAX, int TEMPS_MIN) {
         int[] tabTemps = new int[8];
         for (int i = 0; i < tabTemps.length; i++) {
@@ -45,6 +51,7 @@ public class App {
         int meilleurTemps = 0;
         int index = 0;
         for (int i = 0; i < tabTemps.length; i++) {
+            //attention, votre méthode trouve le temps le plus grand, qui est en fait, le plus mauvais
             if (meilleurTemps > tabTemps[i]) {
                 meilleurTemps = tabTemps[i];
                 index = i;
@@ -59,6 +66,6 @@ public class App {
             ridersRestants[i] = riders[positionMeilleurTemps(tabTemps)];
             tabTemps[positionMeilleurTemps(tabTemps)] = Integer.MAX_VALUE;
         }
-        riders = ridersRestants;
+        riders = ridersRestants; //cette étape ne se fait pas ici, ce n'est pas demandé dans la donnée
     }
 }
