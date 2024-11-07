@@ -1,34 +1,101 @@
 package app;
 
 import java.util.Scanner;
-import models.*;
+import models.players;
+import models.Shotgun;
 import graphics.*;
 
 public class App {
     public static final int MAX_SHELL = 4;
     public static final int MIN_SHELL = 1;
-    public static final int MAX_HEALTH = 4;
     public static Scanner scanner;
 
     // set the finals ints
     public static void main(String[] args) throws InterruptedException {
         int[] shotgun = new int[8];
-        int[] aiInventory = new int[8];
-        int[] playerInventory = new int[8];
-        int playerHealth = MAX_HEALTH;
-        int aiHealth = MAX_HEALTH;
+        Shotgun Shotgun = new Shotgun(shotgun, false);
+        int[] inventory = new int[8];
         boolean empty = true;
-        boolean playerTurn = false;
-        boolean game = true;
-        boolean playing = true;
+        int playerTurn = 1;
+        boolean IsGameRunnig = true;
+        boolean isThePlayerPlaying = true;
         boolean self = true;
-        boolean player = true;
         boolean sawed = false;
         scanner = new Scanner(System.in);
         int anger = 0;
-        
+        int maxHealth = 0;
+        boolean areItemAllowed = true;
+        int numberOfPlayer = 0;
+        boolean IsAiPlaying = false;
         // set all the variables in the code
-        while (game == true) {
+
+        System.out.println("hello there");
+        System.out.println("what gamemode you want to play ?");
+        System.out.println("1 = speedgame (2 lives per player)");
+        System.out.println("2 = clasic (the good old game)");
+        System.out.println("3 = no items (no item pure luck and gamble)");
+        int gamemode = scanner.nextInt();
+        switch (gamemode) {
+            case 1:
+            maxHealth = 2;
+            areItemAllowed = true;
+            break;
+            case 2:
+            maxHealth = 4;
+            areItemAllowed = true;
+            break;
+            case 3:
+            maxHealth = 4;
+            areItemAllowed = false;
+            break;
+        }
+        System.out.println("alright then.");
+        System.out.println("and who do you want to play with ?");
+        System.out.println("1 = vs the dealer (a random IA to play with you)");
+        System.out.println("2 = PvP (2 player match)");
+        System.out.println("3 = hell hole (4 player match)");
+        int whoIsPlaying = scanner.nextInt();
+        switch (whoIsPlaying) {
+            case 1:
+            numberOfPlayer = 2;
+             IsAiPlaying = true;
+                System.out.println("alright see you at the table");
+                System.out.println("so what your name fela");
+                String name = scanner.nextLine();
+                players player = new players(1, name, maxHealth, inventory, false, true);
+                players dealer = new players(2, name, maxHealth, inventory, false, true);
+                break;
+            case 2:
+            numberOfPlayer = 2;
+                System.out.println("hope you guys have fun in there");
+                System.out.println("just before you go there, can i have your names");
+                System.out.println("so who is player 1?");
+                String name1 = scanner.nextLine();
+                players player1 = new players(1, name1, maxHealth, inventory, false, true);
+                System.out.println("alright, and you ?");
+                String name2 = scanner.nextLine();
+                players player2 = new players(2, name2, maxHealth, inventory, false,true);
+                break;
+            case 3:
+            numberOfPlayer = 4;
+                System.out.println("you guys are crazy, let me grab the key to the room");
+                System.out.println("just i need you guys name and signature to say that i ain't responsable for tf is happening back there alright?");
+                System.out.println("so... player 1");
+                String name4_1 = scanner.nextLine();
+                players player4_1 = new players(1, name4_1, maxHealth, inventory, false, true);
+                System.out.println("player 2?");
+                String name4_2 = scanner.nextLine();
+                players player4_2 = new players(2, name4_2, maxHealth, inventory, false,true);
+                System.out.println("player 3!");
+                String name4_3 = scanner.nextLine();
+                players player4_3 = new players(3, name4_3, maxHealth, inventory, false, true);
+                System.out.println("and finaly player 4");
+                String name4_4 = scanner.nextLine();
+                players player4_4 = new players(4, name4_4, maxHealth, inventory, false, true);
+                break;
+        }
+
+        while (IsGameRunnig == true) {
         for (int i = 0; i < shotgun.length; i++) {
             if (shotgun[i] == 0) {
                 empty = true;
@@ -40,11 +107,11 @@ public class App {
             if (empty == true) {
                 System.out.println("the shotgun is empty");
                 Thread.sleep(500);
-                reload(shotgun, MAX_SHELL, MIN_SHELL);
+                models.Shotgun.reload(int MAX_SHELL,int MIN_SHELL);
                 giveItemsAi(aiInventory);
                 giveItemsPlayer(playerInventory);
-                show(playerInventory, aiInventory, playerHealth, aiHealth);
-                playerTurn = true;
+                graphics.shells.showShell(playerTurn, anger);
+                playerTurn = 1;
 
             }
             // check if the shotgun is loaded or no if no reload and gives items to both
@@ -132,42 +199,6 @@ public class App {
             }
             scanner.close();
         }
-    }
-        
-
-    
-
-    public static int[] reload(int[] shotgun, int MAX_SHELL, int MIN_SHELL) throws InterruptedException {
-        int blank = (int) (Math.random() * (MAX_SHELL - MIN_SHELL + 1)) + MIN_SHELL;
-        int live = (int) (Math.random() * (MAX_SHELL - MIN_SHELL + 1)) + MIN_SHELL;
-        int shells = blank + live;
-        showShell(blank, live);
-        System.out.println("there is " + live + " live and " + blank + " blank");
-        Thread.sleep(500);
-        for (int i = 0; i < shells; i++) {
-            int random = (int) (Math.random() * (2 - 1 + 1)) + 1;
-            if (random == 1) {
-                if (blank > 0) {
-                    blank = blank - 1;
-                    shotgun[i] = 1;
-                } else {
-                    live = live - 1;
-                    shotgun[i] = 2;
-                }
-            }
-            if (random == 2) {
-                if (live > 0) {
-                    live = live - 1;
-                    shotgun[i] = 2;
-                } else {
-                    blank = blank - 1;
-                    shotgun[i] = 1;
-                }
-            }
-        }
-        System.out.println("all shells are suffled");
-        Thread.sleep(500);
-        return shotgun;
     }
     // reload and randomize in a random amount and order
 

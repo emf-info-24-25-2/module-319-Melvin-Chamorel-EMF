@@ -1,12 +1,11 @@
 package exercices.exerciceBonus;
 
 public class lesOperateurDeCode {
-    public static void main(String[] args) {
-        int variable1 = 12;
-        if (variable1 == 1) {
-            System.out.println("marche");
-        } else {
-            System.out.println("marche pas");
-    }
-}
+        public static void main(String[] args) {
+            String name = "David Andrade"; // Example name
+            int fixedLength = 45; 
+            String formattedString = String.format("|%-" + (fixedLength - 1) + "s|    /                                        |", name);
+            
+            System.out.println(formattedString);
+        }
 }

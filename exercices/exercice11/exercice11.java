@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Random;
 
-public class Exercice11 {
+public class exercice11 {
     // Déclaration de la méthode inverseLeTableau
     public static int[] inverseLeTableau(int[] tableau) {
         int longueur = tableau.length;
