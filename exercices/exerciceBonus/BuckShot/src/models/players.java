@@ -1,11 +1,13 @@
 package models;
 public class players {
+    private int id;
     private String nom;
     private int HP;
     private int[] inventory;
     private boolean blocked;
 
     public players(int hP, int[] inventory, boolean blocked) {
+        this.id = id;
         this.nom = nom;
         this.HP = hP;
         this.inventory = inventory;
