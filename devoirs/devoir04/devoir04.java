@@ -23,6 +23,7 @@ public class devoir04 {
                 }
                 break;
                 case 2:
+                    //RIF: et les années bissextiles? :-)
                 if (day > 28 || day < 0) {
                     System.out.println("le jour [" + day +"] est hors limites !");
                 } else {
@@ -104,6 +105,7 @@ public class devoir04 {
                 System.out.print("ERROR");
                     break;
             }
+            // RIF: pourquoi ce print?
             System.out.println(" " + year);
     
             }
