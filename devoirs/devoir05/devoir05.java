@@ -1,5 +1,6 @@
 package devoirs.devoir05;
 
+// très bien!
 public class devoir05 {
 import java.util.Random;
 
