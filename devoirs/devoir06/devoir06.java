@@ -12,6 +12,8 @@ public class devoir06{
         for(int i = 0; i < tableauxEntier.length; i++){
             System.out.print(tableauxEntier[i]);
         }
+
+        //RIF: vous devriez utiliser la valeur définie en constante
         int valeurARechercher = 0;
         int valeurTrouver = rechercheValeur(tableauxEntier, valeurARechercher);
         int valeurMax = rechercheMax(tableauxEntier);
@@ -23,6 +25,7 @@ public class devoir06{
         int[]tableauxEntier = new int[taille];
         for(int i = 0; i < tableauxEntier.length; i++){
             tableauxEntier[i] = (int) (Math.random() * (max - min + 1)+min);
+            //RIF: le i++ est déjà dans la boucle for, ne le mettez pas encore une fois
             i++;
         }
         return tableauxEntier;
@@ -31,6 +34,7 @@ public class devoir06{
     public static int rechercheMin(int[] tableaux){
         int valeurMin = 0;
         for(int i = 0; i < tableaux.length; i++){
+            //RIF: si vous faites cela dans la boucle, que se passe-t-il?
             valeurMin = tableaux[0];
             if (valeurMin > tableaux[i]){
                 valeurMin = tableaux[i];
@@ -42,6 +46,7 @@ public class devoir06{
     public static int rechercheMax(int[] tableaux){
         int valeurMax = 0;
         for(int i = 0; i < tableaux.length; i++){
+            //RIF: même remarque
             valeurMax = tableaux[0];
             if (valeurMax < tableaux[i]){
                 valeurMax = tableaux[i];
@@ -54,6 +59,7 @@ public class devoir06{
         int valeurTrouver = -1;
         for(int i = 0; i < tableaux.length; i++){
             if(tableaux[i] == valeurARechercher){
+                //RIF: cette méthode ne doit pas retourner la valeur contenue (on la connait déjà, c'est "valeurARechercher" mais son index/ sa position
                 valeurTrouver = tableaux[i];
             }
         }
