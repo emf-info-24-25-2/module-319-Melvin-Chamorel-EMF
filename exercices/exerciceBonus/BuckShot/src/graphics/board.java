@@ -9,7 +9,7 @@ public class board {
 if (IsAiPlaying) {
   dummyTable = dealer.getInventory();       
 } else {
-        player2.getInventory();
+       dummyTable = player2.getInventory();
 }
 
 

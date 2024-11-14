@@ -49,6 +49,10 @@ public class Shotgun {
         Thread.sleep(500);
     }
     
+    public void getSawed(){
+        sawed = true;
+    }
+    
 }
 
 

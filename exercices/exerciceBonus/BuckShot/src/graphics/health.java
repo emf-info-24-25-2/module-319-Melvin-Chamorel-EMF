@@ -1,7 +1,19 @@
 package graphics;
 
+import models.players;
+
 public class health {
-    public static void showHP(int playerHealth, int aiHealth) throws InterruptedException {
+    public static void showHP(players player1, players player2, players player, players dealer, boolean IsAiPlaying ) throws InterruptedException {
+        int health1;
+        int health2;
+        if (IsAiPlaying) {
+            health1 = player.getHP();
+            health2 = dealer.getHP();
+        }else{
+            health1 = player1.getHP();
+            health2 = player2.getHP();
+        }
+        
         System.out.println("+--------------------------------------------+---------------------------------------------+");
         Thread.sleep(100);
         System.out.println("|                                            |                                             |");
@@ -10,7 +22,7 @@ public class health {
         Thread.sleep(100);
         System.out.println("+--------------------------------------------+---------------------------------------------+");
         Thread.sleep(100);
-        switch (aiHealth) {
+        switch (health2) {
             case 1:
             System.out.print("|    /                                       ");
             break;
@@ -24,7 +36,7 @@ public class health {
             System.out.print("|    /          /          /          /      ");
         }
         Thread.sleep(100);
-        switch (playerHealth) {
+        switch (health1) {
             case 1:
             System.out.println("|    /                                        |");
             break;
@@ -38,7 +50,7 @@ public class health {
             System.out.println("|    /          /          /          /       |");
         }
         Thread.sleep(100);
-        switch (aiHealth) {
+        switch (health2) {
             case 1:
             System.out.print("|   /                                        ");
             break;
@@ -52,7 +64,7 @@ public class health {
             System.out.print("|   /          /          /          /       ");
         }
         Thread.sleep(100);
-        switch (playerHealth) {
+        switch (health1) {
             case 1:
             System.out.println("|   /                                         |");
             break;
@@ -66,7 +78,7 @@ public class health {
             System.out.println("|   /          /          /          /        |");
         }
         Thread.sleep(100);
-        switch (aiHealth) {
+        switch (health2) {
             case 1:
             System.out.print("|  /                                         ");
             break;
@@ -80,7 +92,7 @@ public class health {
             System.out.print("|  /          /          /          /        ");
         }
         Thread.sleep(100);
-        switch (playerHealth) {
+        switch (health1) {
             case 1:
             System.out.println("|  /                                          |");
             break;
@@ -94,7 +106,7 @@ public class health {
             System.out.println("|  /          /          /          /         |");
         }
         Thread.sleep(100);
-        switch (aiHealth) {
+        switch (health2) {
             case 1:
             System.out.print("| /                                          ");
             break;
@@ -108,7 +120,7 @@ public class health {
             System.out.print("| /          /          /          /         ");
         }
         Thread.sleep(100);
-        switch (playerHealth) {
+        switch (health1) {
             case 1:
             System.out.println("| /                                           |");
             break;
@@ -122,7 +134,7 @@ public class health {
             System.out.println("| /          /          /          /          |");
         }
         Thread.sleep(100);
-        switch (aiHealth) {
+        switch (health2) {
             case 1:
             System.out.print("|/______                                     ");
             break;
@@ -136,7 +148,7 @@ public class health {
             System.out.print("|/______    /______    /______    /______    ");
         }
         Thread.sleep(100);
-        switch (playerHealth) {
+        switch (health1) {
             case 1:
             System.out.println("|/______                                      |");
             break;
@@ -150,7 +162,7 @@ public class health {
             System.out.println("|/______    /______    /______    /______     |");
         }
         Thread.sleep(100);
-        switch (aiHealth) {
+        switch (health2) {
             case 1:
             System.out.print("|      /                                     ");
             break;
@@ -164,7 +176,7 @@ public class health {
             System.out.print("|      /          /          /          /    ");
         }
         Thread.sleep(100);
-        switch (playerHealth) {
+        switch (health1) {
             case 1:
             System.out.println("|      /                                      |");
             break;
@@ -178,7 +190,7 @@ public class health {
             System.out.println("|      /          /          /          /     |");
         }
         Thread.sleep(100);
-        switch (aiHealth) {
+        switch (health2) {
             case 1:
             System.out.print("|     /                                      ");
             break;
@@ -192,7 +204,7 @@ public class health {
             System.out.print("|     /          /          /          /     ");
         }
         Thread.sleep(100);
-        switch (playerHealth) {
+        switch (health1) {
             case 1:
             System.out.println("|     /                                       |");
             break;
@@ -206,7 +218,7 @@ public class health {
             System.out.println("|     /          /          /          /      |");
         }
         Thread.sleep(100);
-        switch (aiHealth) {
+        switch (health2) {
             case 1:
             System.out.print("|    /                                       ");
             break;
@@ -220,7 +232,7 @@ public class health {
             System.out.print("|    /          /          /          /      ");
         }
         Thread.sleep(100);
-        switch (playerHealth) {
+        switch (health1) {
             case 1:
             System.out.println("|    /                                        |");
             break;
@@ -234,7 +246,7 @@ public class health {
             System.out.println("|    /          /          /          /       |");
         }
         Thread.sleep(100);
-        switch (aiHealth) {
+        switch (health2) {
             case 1:
             System.out.print("|   /                                        ");
             break;
@@ -248,7 +260,7 @@ public class health {
             System.out.print("|   /          /          /          /       ");
         }
         Thread.sleep(100);
-        switch (playerHealth) {
+        switch (health1) {
             case 1:
             System.out.println("|   /                                         |");
             break;
@@ -262,7 +274,7 @@ public class health {
             System.out.println("|   /          /          /          /        |");
         }
         Thread.sleep(100);
-        switch (aiHealth) {
+        switch (health2) {
             case 1:
             System.out.print("|  /                                         ");
             break;
@@ -276,7 +288,7 @@ public class health {
             System.out.print("|  /          /          /          /        ");
         }
         Thread.sleep(100);
-        switch (playerHealth) {
+        switch (health1) {
             case 1:
             System.out.println("|  /                                          |");
             break;
@@ -294,8 +306,5 @@ public class health {
         Thread.sleep(100);
         System.out.println("+--------------------------------------------+---------------------------------------------+");
         Thread.sleep(100);
-        if (playerHealth==1) {
-            System.out.println("careful now");
-        }
         }
 }
