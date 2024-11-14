@@ -12,8 +12,7 @@ public class App {
 
     // set the finals ints
     public static void main(String[] args) throws InterruptedException {
-        int[] shotgun = new int[8];
-        Shotgun Shotgun = new Shotgun(shotgun, false);
+        Shotgun shotgun;
         int[] inventory = new int[8];
         boolean empty = true;
         int playerTurn = 1;
@@ -94,192 +93,31 @@ public class App {
                 players player4_4 = new players(4, name4_4, maxHealth, inventory, false, true);
                 break;
         }
-
-        while (IsGameRunnig == true) {
-        for (int i = 0; i < shotgun.length; i++) {
-            if (shotgun[i] == 0) {
-                empty = true;
-            } else {
-                empty = false;
-                break;
+        if (numberOfPlayer == 2) {
+            if (IsAiPlaying) {
+                gamemode1();
             }
-        }
-            if (empty == true) {
-                System.out.println("the shotgun is empty");
-                Thread.sleep(500);
-                Shotgun.reload(int MAX_SHELL,int MIN_SHELL);
-                giveItemsAi(aiInventory);
-                giveItemsPlayer(playerInventory);
-                graphics.shells.showShell(playerTurn, anger);
-                playerTurn = 1;
-
-            }
-            // check if the shotgun is loaded or no if no reload and gives items to both
-
-            if (playerTurn == true) {
-                
-                while (playing == true) {
-                    System.out.println("it's your turn,");
-                    Thread.sleep(500);
-                    System.out.println("1: shoot yourself");
-                    Thread.sleep(500);
-                    System.out.println("2: shoot ennemy");
-                    Thread.sleep(500);
-                    System.out.println("3: use item");
-                    Thread.sleep(500);
-                    System.out.println("4: show HP");
-
-                    int chois = scanner.nextInt();
-                    switch (chois) {
-                        case 1:
-                            self = true;
-                            player = true;
-                            shoot(shotgun, playerHealth, aiHealth, self, player, sawed, playerTurn, playing);
-                            break;
-                        case 2:
-                            self = false;
-                            player = true;
-                            shoot(shotgun, playerHealth, aiHealth, self, player, sawed, playerTurn, playing);
-                            break;
-                        case 3:
-                            player = true;
-                            useItems(aiInventory, playerInventory, sawed, player, shotgun, playerHealth, aiHealth);
-                            show(playerInventory, aiInventory, playerHealth, aiHealth);
-                            break;
-                        case 4:
-                            showHP(playerHealth, aiHealth);
-                            break;
-                        default:
-
-                            switch (anger) {
-                                case 0:
-                                    System.out.println("what are you doing ?");
-                                    anger = 1;
-                                    break;
-                                case 1:
-                                    System.out.println("euu are you ok?");
-                                    anger = 2;
-                                    break;
-                                case 2:
-                                    System.out.println("is there somthing wrong?");
-                                    anger = 4;
-                                    break;
-                                default:
-                                    System.out.println("GET OUT!!!");
-                                    playerHealth = 0;
-                                    playing = false;
-                                    playerTurn = false;
-                                    break;
-                            }
-
-                            break;
-                    }
-                }
-
-            } else {
-                System.out.println("my turn now");
-                int aiChoice = (int) (Math.random() * (3 - 1 + 1)) + 1;
-                switch (aiChoice) {
-                    case 1:
-                        self = true;
-                        player = false;
-                        shoot(shotgun, playerHealth, aiHealth, self, player, sawed, playerTurn, playing);
-                        break;
-                    case 2:
-                        self = false;
-                        player = false;
-                        shoot(shotgun, playerHealth, aiHealth, self, player, sawed, playerTurn, playing);
-                        break;
-                    case 3:
-                        player = false;
-                        useItems(aiInventory, playerInventory, sawed, player, shotgun, playerHealth, aiHealth);
-                        break;
-            }
-
-            }
-            scanner.close();
+            gamemode2();
+        } else {
+            gamemode3();
         }
     }
-    // reload and randomize in a random amount and order
 
-
-    public static void shoot(int[] shotgun, int playerHealth, int aiHealth, boolean self, boolean player, boolean sawed,boolean playerTurn, boolean playing) throws InterruptedException {
-        for (int i = 0; i < shotgun.length; i++) {
-            if (shotgun[i] > 0) {
-                if (player == true) {
-                    if (self == true) {
-                        if (shotgun[i] == 1) {
-                            System.out.print("click.");
-                            Thread.sleep(1000);
-                            System.out.println(" It's a blank");
-                            Thread.sleep(500);
-                        } else {
-                            System.out.println("BOOM!!!");
-                            if (sawed == true) {
-                                playerHealth -= 2;
-                            } else {
-                                playerHealth--;
-                            }
-                            playerTurn = false;
-                        }
-                    } else {
-                        if (shotgun[i] == 1) {
-                            System.out.print("click.");
-                            Thread.sleep(1000);
-                            System.out.println(" It's a blank");
-                            Thread.sleep(500);
-                            playerTurn = false;
-                        } else {
-                            System.out.println("BOOM!!!");
-                            if (sawed == true) {
-                                aiHealth -= 2;
-                            } else {
-                                aiHealth--;
-                            }
-                            playerTurn = false;
-                        }
-                    }
-                } else {
-                    if (self == true) {
-                        if (shotgun[i] == 1) {
-                            System.out.print("click.");
-                            Thread.sleep(1000);
-                            System.out.println(" It's a blank");
-                            Thread.sleep(500);
-                            playerTurn = false;
-                        } else {
-                            System.out.println("BOOM!!!");
-                            if (sawed == true) {
-                                aiHealth -= 2;
-                            } else {
-                                aiHealth--;
-                            }
-                            playerTurn = true;
-                        }
-                    } else {
-                        if (shotgun[i] == 1) {
-                            System.out.print("click.");
-                            Thread.sleep(1000);
-                            System.out.println(" It's a blank");
-                            Thread.sleep(500);
-                            playerTurn = true;
-                        } else {
-                            System.out.println("BOOM!!!");
-                            if (sawed == true) {
-                                playerHealth -= 2;
-                            } else {
-                                playerHealth--;
-                            }
-                            playerTurn = true;
-                        }
-                    }
-
-                }
-                shotgun[i] = 0;
-                playing = false;
-                break;
-            }
+        public static void gamemode1(){
+            
         }
-        
-    }
+
+        public static void gamemode2(){
+
+        }
+
+        public static void gamemode3(){
+            graphics.board4.show4(null, null, null, null);
+        }
 }
+
+          
+
+
+    
+

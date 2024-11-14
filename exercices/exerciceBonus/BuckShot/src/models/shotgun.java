@@ -4,9 +4,9 @@ public class Shotgun {
     private int[] magasine;
     private boolean sawed;
     
-    public Shotgun(int[] magasine, boolean sawed) {
-        this.magasine = magasine;
-        this.sawed = sawed;
+    public Shotgun() {
+        this.magasine =new int[8];
+        this.sawed = false;
     }
 
     public int[] getMagasine() {
@@ -48,7 +48,7 @@ public class Shotgun {
         System.out.println("all shells are suffled");
         Thread.sleep(500);
     }
-    
+
     public void getSawed(){
         sawed = true;
     }

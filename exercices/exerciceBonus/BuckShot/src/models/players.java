@@ -206,7 +206,7 @@ public class players {
                 useDrugs();
                 break;
             case 10:
-                App.useReverse();
+                //App.useReverse();
                 break;
         }
     }
@@ -223,9 +223,7 @@ public class players {
 
     }
 
-    public void useSaw(Shotgun shotgun){
-        System.out.println("you take the saw and saw the barrel off");
-        shotgun.getSawed();
+    public void useSaw(){  
     }
 
     public void usePhone(){
@@ -240,7 +238,7 @@ public class players {
 
     }
 
-    public void useInverter(Shotgun shotgun){
+    public void useInverter(){
 
     }
 
