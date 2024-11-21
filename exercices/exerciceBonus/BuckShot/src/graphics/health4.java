@@ -4,10 +4,11 @@ import models.players;
 
 public class health4 {
 
-    public void showHP4Players(players player4_1, players player4_2, players player4_3, players player4_4) {
+    public static void showHP4Players(players player4_1, players player4_2, players player4_3, players player4_4) throws InterruptedException {
         int fixedLength = 45;
         String formattedString;
         System.out.println("+--------------------------------------------+---------------------------------------------+");
+        Thread.sleep(100);
         switch (player4_1.getHP()) {
             case 0:
             System.out.println("|                                            |/  /  /  /  /  /  /  /  /  /  /  /  /  /  /  |");
@@ -25,6 +26,7 @@ public class health4 {
             System.out.println("|                                            |    /          /          /          /       |");  
             break;
         }
+        Thread.sleep(100);
         switch (player4_1.getHP()) {
                 case 0:
                 formattedString = String.format("|%-" + (fixedLength - 1) + "s|  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /|", player4_1.getNom());
@@ -52,6 +54,7 @@ public class health4 {
                 System.out.println(formattedString);
                 break;
     } 
+    Thread.sleep(100);
     switch (player4_1.getHP()) {
         case 0:
         System.out.println("+--------------------------------------------+ /  /  /  /  /  /  /  /  /  /  /  /  /  /  / |");
@@ -69,6 +72,7 @@ public class health4 {
         System.out.println("+--------------------------------------------+  /          /          /          /         |");  
         break;
     }
+    Thread.sleep(100);
     switch (player4_1.getHP()) {
         case 0:
         System.out.println("|                                            |/  /  /  /  /  /  /  /  /  /  /  /  /  /  /  |");
@@ -86,6 +90,7 @@ public class health4 {
         System.out.println("|                                            | /          /          /          /          |");  
         break;
     }
+    Thread.sleep(100);
     switch (player4_1.getHP()) {
         case 0:
         System.out.println("|       ______                               |  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /|");
@@ -103,6 +108,7 @@ public class health4 {
         System.out.println("|                                            |/______    /______    /______    /______     |");  
         break;
     }
+    Thread.sleep(100);
     switch (player4_1.getHP()) {
         case 0:
         System.out.println("|      [      ]                              | /  /  /  /  /  /  /  /  /  /  /  /  /  /  / |");
@@ -120,6 +126,7 @@ public class health4 {
         System.out.println("|                                            |      /          /          /          /     |");  
         break;
     }
+    Thread.sleep(100);
     switch (player4_1.getHP()) {
         case 0:
         System.out.println("|     | 0   0  |                             |/  /  /  /  /  /  /  /  /  /  /  /  /  /  /  |");
@@ -137,6 +144,7 @@ public class health4 {
         System.out.println("|                                            |     /          /          /          /      |");  
         break;
     }
+    Thread.sleep(100);
     switch (player4_1.getHP()) {
         case 0:
         System.out.println("|     |   oo   |                             |  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /|");
@@ -154,6 +162,7 @@ public class health4 {
         System.out.println("|                                            |    /          /          /          /       |");  
         break;
     }
+    Thread.sleep(100);
     switch (player4_1.getHP()) {
         case 0:
         System.out.println("|      [      ]                              | /  /  /  /  /  /  /  /  /  /  /  /  /  /  / |");
@@ -171,6 +180,7 @@ public class health4 {
         System.out.println("|                                            |   /          /          /          /        |");  
         break;
     }
+    Thread.sleep(100);
     switch (player4_1.getHP()) {
         case 0:
         System.out.println("|       [][][]                               |/  /  /  /  /  /  /  /  /  /  /  /  /  /  /  |");
@@ -188,7 +198,9 @@ public class health4 {
         System.out.println("|                                            |  /          /          /          /         |");  
         break;
     }
+    Thread.sleep(100);
     System.out.println("+--------------------------------------------+---------------------------------------------+");
+    Thread.sleep(100);
     switch (player4_2.getHP()) {
         case 0:
         System.out.println("|                                            |/  /  /  /  /  /  /  /  /  /  /  /  /  /  /  |");
@@ -206,6 +218,7 @@ public class health4 {
         System.out.println("|                                            |    /          /          /          /       |");  
         break;
     }
+    Thread.sleep(100);
     switch (player4_2.getHP()) {
             case 0:
             formattedString = String.format("|%-" + (fixedLength - 1) + "s|  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /|", player4_2.getNom());
@@ -233,6 +246,7 @@ public class health4 {
             System.out.println(formattedString);
             break;
 } 
+Thread.sleep(100);
 switch (player4_2.getHP()) {
     case 0:
     System.out.println("+--------------------------------------------+ /  /  /  /  /  /  /  /  /  /  /  /  /  /  / |");
@@ -250,6 +264,7 @@ switch (player4_2.getHP()) {
     System.out.println("+--------------------------------------------+  /          /          /          /         |");  
     break;
 }
+Thread.sleep(100);
 switch (player4_2.getHP()) {
     case 0:
     System.out.println("|                                            |/  /  /  /  /  /  /  /  /  /  /  /  /  /  /  |");
@@ -267,6 +282,7 @@ switch (player4_2.getHP()) {
     System.out.println("|                                            | /          /          /          /          |");  
     break;
 }
+Thread.sleep(100);
 switch (player4_2.getHP()) {
     case 0:
     System.out.println("|       ______                               |  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /|");
@@ -284,6 +300,7 @@ switch (player4_2.getHP()) {
     System.out.println("|                                            |/______    /______    /______    /______     |");  
     break;
 }
+Thread.sleep(100);
 switch (player4_2.getHP()) {
     case 0:
     System.out.println("|      [      ]                              | /  /  /  /  /  /  /  /  /  /  /  /  /  /  / |");
@@ -301,6 +318,7 @@ switch (player4_2.getHP()) {
     System.out.println("|                                            |      /          /          /          /     |");  
     break;
 }
+Thread.sleep(100);
 switch (player4_2.getHP()) {
     case 0:
     System.out.println("|     | 0   0  |                             |/  /  /  /  /  /  /  /  /  /  /  /  /  /  /  |");
@@ -318,6 +336,7 @@ switch (player4_2.getHP()) {
     System.out.println("|                                            |     /          /          /          /      |");  
     break;
 }
+Thread.sleep(100);
 switch (player4_2.getHP()) {
     case 0:
     System.out.println("|     |   oo   |                             |  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /|");
@@ -335,6 +354,7 @@ switch (player4_2.getHP()) {
     System.out.println("|                                            |    /          /          /          /       |");  
     break;
 }
+Thread.sleep(100);
 switch (player4_2.getHP()) {
     case 0:
     System.out.println("|      [      ]                              | /  /  /  /  /  /  /  /  /  /  /  /  /  /  / |");
@@ -352,6 +372,7 @@ switch (player4_2.getHP()) {
     System.out.println("|                                            |   /          /          /          /        |");  
     break;
 }
+Thread.sleep(100);
 switch (player4_2.getHP()) {
     case 0:
     System.out.println("|       [][][]                               |/  /  /  /  /  /  /  /  /  /  /  /  /  /  /  |");
@@ -369,6 +390,7 @@ switch (player4_2.getHP()) {
     System.out.println("|                                            |  /          /          /          /         |");  
     break;
 }
+Thread.sleep(100);
 System.out.println("+--------------------------------------------+---------------------------------------------+");
 switch (player4_3.getHP()) {
     case 0:
@@ -387,6 +409,7 @@ switch (player4_3.getHP()) {
     System.out.println("|                                            |    /          /          /          /       |");  
     break;
 }
+Thread.sleep(100);
 switch (player4_3.getHP()) {
         case 0:
         formattedString = String.format("|%-" + (fixedLength - 1) + "s|  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /|", player4_3.getNom());
@@ -414,6 +437,7 @@ switch (player4_3.getHP()) {
         System.out.println(formattedString);
         break;
 } 
+Thread.sleep(100);
 switch (player4_3.getHP()) {
 case 0:
 System.out.println("+--------------------------------------------+ /  /  /  /  /  /  /  /  /  /  /  /  /  /  / |");
@@ -431,6 +455,7 @@ case 4:
 System.out.println("+--------------------------------------------+  /          /          /          /         |");  
 break;
 }
+Thread.sleep(100);
 switch (player4_3.getHP()) {
 case 0:
 System.out.println("|                                            |/  /  /  /  /  /  /  /  /  /  /  /  /  /  /  |");
@@ -448,6 +473,7 @@ case 4:
 System.out.println("|                                            | /          /          /          /          |");  
 break;
 }
+Thread.sleep(100);
 switch (player4_3.getHP()) {
 case 0:
 System.out.println("|       ______                               |  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /|");
@@ -465,6 +491,7 @@ case 4:
 System.out.println("|                                            |/______    /______    /______    /______     |");  
 break;
 }
+Thread.sleep(100);
 switch (player4_3.getHP()) {
 case 0:
 System.out.println("|      [      ]                              | /  /  /  /  /  /  /  /  /  /  /  /  /  /  / |");
@@ -482,6 +509,7 @@ case 4:
 System.out.println("|                                            |      /          /          /          /     |");  
 break;
 }
+Thread.sleep(100);
 switch (player4_3.getHP()) {
 case 0:
 System.out.println("|     | 0   0  |                             |/  /  /  /  /  /  /  /  /  /  /  /  /  /  /  |");
@@ -499,6 +527,7 @@ case 4:
 System.out.println("|                                            |     /          /          /          /      |");  
 break;
 }
+Thread.sleep(100);
 switch (player4_3.getHP()) {
 case 0:
 System.out.println("|     |   oo   |                             |  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /|");
@@ -516,6 +545,7 @@ case 4:
 System.out.println("|                                            |    /          /          /          /       |");  
 break;
 }
+Thread.sleep(100);
 switch (player4_3.getHP()) {
 case 0:
 System.out.println("|      [      ]                              | /  /  /  /  /  /  /  /  /  /  /  /  /  /  / |");
@@ -533,6 +563,7 @@ case 4:
 System.out.println("|                                            |   /          /          /          /        |");  
 break;
 }
+Thread.sleep(100);
 switch (player4_3.getHP()) {
 case 0:
 System.out.println("|       [][][]                               |/  /  /  /  /  /  /  /  /  /  /  /  /  /  /  |");
@@ -550,7 +581,9 @@ case 4:
 System.out.println("|                                            |  /          /          /          /         |");  
 break;
 }
+Thread.sleep(100);
 System.out.println("+--------------------------------------------+---------------------------------------------+");
+Thread.sleep(100);
 switch (player4_4.getHP()) {
     case 0:
     System.out.println("|                                            |/  /  /  /  /  /  /  /  /  /  /  /  /  /  /  |");
@@ -568,6 +601,7 @@ switch (player4_4.getHP()) {
     System.out.println("|                                            |    /          /          /          /       |");  
     break;
 }
+Thread.sleep(100);
 switch (player4_4.getHP()) {
         case 0:
         formattedString = String.format("|%-" + (fixedLength - 1) + "s|  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /|", player4_4.getNom());
@@ -595,6 +629,7 @@ switch (player4_4.getHP()) {
         System.out.println(formattedString);
         break;
 } 
+Thread.sleep(100);
 switch (player4_4.getHP()) {
 case 0:
 System.out.println("+--------------------------------------------+ /  /  /  /  /  /  /  /  /  /  /  /  /  /  / |");
@@ -612,6 +647,7 @@ case 4:
 System.out.println("+--------------------------------------------+  /          /          /          /         |");  
 break;
 }
+Thread.sleep(100);
 switch (player4_4.getHP()) {
 case 0:
 System.out.println("|                                            |/  /  /  /  /  /  /  /  /  /  /  /  /  /  /  |");
@@ -629,6 +665,7 @@ case 4:
 System.out.println("|                                            | /          /          /          /          |");  
 break;
 }
+Thread.sleep(100);
 switch (player4_4.getHP()) {
 case 0:
 System.out.println("|       ______                               |  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /|");
@@ -646,6 +683,7 @@ case 4:
 System.out.println("|                                            |/______    /______    /______    /______     |");  
 break;
 }
+Thread.sleep(100);
 switch (player4_4.getHP()) {
 case 0:
 System.out.println("|      [      ]                              | /  /  /  /  /  /  /  /  /  /  /  /  /  /  / |");
@@ -663,6 +701,7 @@ case 4:
 System.out.println("|                                            |      /          /          /          /     |");  
 break;
 }
+Thread.sleep(100);
 switch (player4_4.getHP()) {
 case 0:
 System.out.println("|     | 0   0  |                             |/  /  /  /  /  /  /  /  /  /  /  /  /  /  /  |");
@@ -680,6 +719,7 @@ case 4:
 System.out.println("|                                            |     /          /          /          /      |");  
 break;
 }
+Thread.sleep(100);
 switch (player4_4.getHP()) {
 case 0:
 System.out.println("|     |   oo   |                             |  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /|");
@@ -697,6 +737,7 @@ case 4:
 System.out.println("|                                            |    /          /          /          /       |");  
 break;
 }
+Thread.sleep(100);
 switch (player4_4.getHP()) {
 case 0:
 System.out.println("|      [      ]                              | /  /  /  /  /  /  /  /  /  /  /  /  /  /  / |");
@@ -714,6 +755,7 @@ case 4:
 System.out.println("|                                            |   /          /          /          /        |");  
 break;
 }
+Thread.sleep(100);
 switch (player4_4.getHP()) {
 case 0:
 System.out.println("|       [][][]                               |/  /  /  /  /  /  /  /  /  /  /  /  /  /  /  |");
@@ -731,6 +773,8 @@ case 4:
 System.out.println("|                                            |  /          /          /          /         |");  
 break;
 }
+Thread.sleep(100);
 System.out.println("+--------------------------------------------+---------------------------------------------+");
+Thread.sleep(100);
 }
 }
